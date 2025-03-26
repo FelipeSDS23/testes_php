@@ -2,21 +2,20 @@
 
 include_once './db/Database.php';
 include_once './classes/Pessoa.php';
+include_once './controllers/PessoaController.php';
 
 $conn = Database::connect();
 
-include_once './views/cadastro.php';
+if(isset($_GET)) {
+    include_once __DIR__ . '/views/dashboard.php';
+}
 
-if(!empty($_POST)) {
-    $nome = $_POST['nome'];
-    $idade = $_POST['idade'];
-    $altura = $_POST['altura'];
+if(isset($_GET['action']) && $_GET['action'] == 'cadastrar') {
+    PessoaController::index();
+}
 
-    //Instancia novo objeto pessoa
-    $felipe = new Pessoa($nome, $idade, $altura);
-
-    //Realiza a persistência do objeto pessoa no banco de dados
-    $felipe->store($conn);
+if(isset($_POST) && !empty($_POST)) {
+    PessoaController::store($conn);
 }
 
 ?>

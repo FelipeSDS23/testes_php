@@ -13,7 +13,7 @@
 <body>
     <div>
         <h1>Cadastro de pessoa</h1>
-        <form action="index.php" method="post">
+        <form action="../index.php" method="post">
             <div class="input-container">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome">
